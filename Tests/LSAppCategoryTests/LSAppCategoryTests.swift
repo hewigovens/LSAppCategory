@@ -1,6 +1,15 @@
 @testable import LSAppCategory
 import Testing
+import SwiftUI
 
-@Test func example() async throws {
-    // Write your test here and use APIs like `#expect(...)` to check expected conditions.
+@Test func TestAllCases() async throws {
+    let allCases = AppCategory.allCases
+
+    #expect(allCases.count > 20)
+
+    for category in allCases {
+        print("\(category.emoji)\(category.description): \(category.rawValue)")
+
+        #expect(Image(systemName: category.sfSymbol) != nil)
+    }
 }
