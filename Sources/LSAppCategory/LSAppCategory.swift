@@ -1,6 +1,6 @@
 import Foundation
 
-public enum AppCategory: String, CaseIterable, Identifiable, Hashable {
+public enum AppCategory: String, CaseIterable, Identifiable, Hashable, Codable {
     case business = "public.app-category.business"
     case developerTools = "public.app-category.developer-tools"
     case education = "public.app-category.education"
@@ -134,48 +134,10 @@ public enum AppCategory: String, CaseIterable, Identifiable, Hashable {
 
 extension AppCategory: CustomStringConvertible {
     public var description: String {
-        switch self {
-        case .business: return "Business"
-        case .developerTools: return "Developer Tools"
-        case .education: return "Education"
-        case .entertainment: return "Entertainment"
-        case .finance: return "Finance"
-        case .games: return "Games"
-        case .actionGames: return "Action Games"
-        case .adventureGames: return "Adventure Games"
-        case .arcadeGames: return "Arcade Games"
-        case .boardGames: return "Board Games"
-        case .cardGames: return "Card Games"
-        case .casinoGames: return "Casino Games"
-        case .diceGames: return "Dice Games"
-        case .educationalGames: return "Educational Games"
-        case .familyGames: return "Family Games"
-        case .kidsGames: return "Kids Games"
-        case .musicGames: return "Music Games"
-        case .puzzleGames: return "Puzzle Games"
-        case .racingGames: return "Racing Games"
-        case .rolePlayingGames: return "Role-Playing Games"
-        case .simulationGames: return "Simulation Games"
-        case .sportsGames: return "Sports Games"
-        case .strategyGames: return "Strategy Games"
-        case .triviaGames: return "Trivia Games"
-        case .wordGames: return "Word Games"
-        case .graphicsDesign: return "Graphics & Design"
-        case .healthFitness: return "Healthcare & Fitness"
-        case .lifestyle: return "Lifestyle"
-        case .medical: return "Medical"
-        case .music: return "Music"
-        case .news: return "News"
-        case .photography: return "Photography"
-        case .productivity: return "Productivity"
-        case .reference: return "Reference"
-        case .socialNetworking: return "Social Networking"
-        case .sports: return "Sports"
-        case .travel: return "Travel"
-        case .utilities: return "Utilities"
-        case .video: return "Video"
-        case .weather: return "Weather"
-        case .other: return "Other"
+        if self == .other {
+            return "Other"
         }
+        let last = String(self.rawValue.split(separator: ".").last!)
+        return last.replacingOccurrences(of: "-", with: " ").capitalized
     }
 }
