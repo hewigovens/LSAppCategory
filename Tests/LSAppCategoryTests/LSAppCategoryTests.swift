@@ -1,6 +1,6 @@
 @testable import LSAppCategory
-import Testing
 import SwiftUI
+import Testing
 
 @Test func TestAllCases() async throws {
     let allCases = AppCategory.allCases
@@ -12,4 +12,6 @@ import SwiftUI
 
         #expect(Image(systemName: category.sfSymbol) != nil)
     }
+
+    #expect(AppCategory(string: nil) == .other)
 }

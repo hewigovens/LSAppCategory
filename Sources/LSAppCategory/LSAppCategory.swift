@@ -49,7 +49,7 @@ public enum AppCategory: String, CaseIterable, Identifiable, Hashable {
         self.rawValue
     }
 
-    init(string: String?) {
+    public init(string: String?) {
         guard let string = string else {
             self = .other
             return
@@ -103,7 +103,7 @@ public enum AppCategory: String, CaseIterable, Identifiable, Hashable {
         }
     }
 
-    var emoji: String {
+    public var emoji: String {
         switch self {
         case .business: return "💼"
         case .developerTools: return "🛠️"
