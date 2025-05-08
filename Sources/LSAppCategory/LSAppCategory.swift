@@ -45,7 +45,17 @@ public enum AppCategory: String, CaseIterable, Identifiable, Hashable {
     // Non-standard or fallback
     case other = ""
 
-    public var id: String { self.rawValue }
+    public var id: String {
+        self.rawValue
+    }
+
+    init(string: String?) {
+        guard let string = string else {
+            self = .other
+            return
+        }
+        self = Self(rawValue: string) ?? .other
+    }
 
     public var sfSymbol: String {
         switch self {
